@@ -1,4 +1,8 @@
 #.gitignore for the ai assistant project
 
-# Ignore all virtual environments
+# Ignore all virtual environments and caches
+*__pycache__/
 *venv/
+
+# Ignore all torch models (run training scripts to generate)
+*.pth
