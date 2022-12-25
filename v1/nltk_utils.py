@@ -1,6 +1,10 @@
 import nltk
 import numpy as np
+
+# ============ uncomment the line below for first install ============
 # nltk.download('punkt')
+# ============ check the v1 README.md file if unsure ============
+
 from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
 def tokenize(sentence):
