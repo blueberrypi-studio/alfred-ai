@@ -1,0 +1,4 @@
+#.gitignore for the ai assistant project
+
+# Ignore all virtual environments
+*venv/

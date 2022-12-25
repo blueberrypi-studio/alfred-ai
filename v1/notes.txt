@@ -1,0 +1,7 @@
+Upgrade Alfred's AI to use less commands for simple tasks
+try to rule out miss-tagged responses in alfreds intents
+test
+study for EMTH119 test on jan 10th
+Say hi to Joe ;-)
+Chicken nuggets are delicious
+This needs to work better

@@ -1,0 +1,87 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": [
+          "Hi",
+          "Hey",
+          "How are you",
+          "Is anyone there?",
+          "Hello",
+          "Good day"
+        ],
+        "responses": [
+          "Hey",
+          "Hello",
+          "Hi there, what can I do for you?",
+          "Hi there, how can I help?"
+        ]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": [
+            "Bye", 
+            "See you later", 
+            "Goodbye", 
+            "cya",
+            "Au revoir"
+        ],
+        "responses": [
+          "See you later, Sir",
+          "Have a nice day",
+          "Bon Voyage Monsieur!"
+        ]
+      },
+      {
+        "tag": "thanks",
+        "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+        "responses": ["Happy to help!", "Any time!", "My pleasure"]
+      },
+      {
+        "tag": "funny",
+        "patterns": [
+          "Tell me a joke!",
+          "Tell me something funny!",
+          "Do you know a joke?",
+          "Make me laugh", 
+          "Cheer me up"
+        ],
+        "responses": [
+          "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+          "What did the buffalo say when his son left for college? Bison."
+        ]
+      },
+      {
+          "tag":"take_notes",
+          "patterns": [
+            "Take a note for me",
+            "remember this for me",
+            "write something down for me",
+            "write this down for me",
+            "help me memorise this", 
+            "help me memorize this",
+            "add an item to my list"
+          ],
+          "responses": [
+            "What do you want me to remember?",
+            "Memory banks recording...  "
+          ]
+      },
+      {
+        "tag":"read_notes",
+        "patterns": [
+          "Show me my notes",
+          "remind me what i asked you to remember",
+          "refresh my memory",
+          "what's in my notes",
+          "remind me whats in my notes",
+          "What are my notes?"
+        ],
+        "responses": [
+          "Here are the things you asked me to Remember",
+          "Here are some of your To Dos"
+        ]
+
+    }
+    ]
+  }
