@@ -28,7 +28,7 @@ Here is an example of the training data in the `intents.json` file
 
 ```
 {
-	"tag": "greeting",
+"tag": "greeting",
     "patterns": [
       "Hi",
       "Hey",
