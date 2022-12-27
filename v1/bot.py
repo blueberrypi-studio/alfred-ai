@@ -8,6 +8,9 @@ from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
 from skills import Skills as sk
 
+BOT_NAME = "Alfred"
+skill = sk()
+SKILLS = skill.get_skills()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -27,11 +30,6 @@ model_state = data["model_state"]
 model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
-
-bot_name = "Alfred"
-
-# If adding new skills, add tag name from intents.json to this list
-SKILLS = ["take_notes", "read_notes"] 
 
 print("Let's chat! (type 'quit' to exit)")
 while True:
@@ -54,16 +52,16 @@ while True:
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                print(f"{bot_name}: {random.choice(intent['responses'])}\n")
+                print(f"{BOT_NAME}: {random.choice(intent['responses'])}\n")
                 if tag in SKILLS:
                     # print(tag)
-                    skill = sk()
+
                     skill.choose_skill(tag)
                 
                     
             
     else:
-        print(f"{bot_name}: I do not understand...")
+        print(f"{BOT_NAME}: I do not understand...")
 
 
 

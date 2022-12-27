@@ -82,6 +82,19 @@
           "Here are some of your To Dos"
         ]
 
+    },
+    {
+      "tag": "wikipedia",
+      "patterns": [
+        "Look something up for me",
+        "Can you search this up?",
+        "I need to learn something",
+        "Teach me something"
+      ],
+      "responses": [
+        "What would you like me to look up for you?", 
+        "Wikipedia is ready and waiting..."
+      ]
     }
     ]
   }

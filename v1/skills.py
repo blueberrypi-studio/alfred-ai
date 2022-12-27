@@ -1,7 +1,10 @@
+import wikipedia
+
 class Skills:
     def __init__(self):
         # super(Skills, self).__init__()
         self.notes_file = "notes.txt"
+        self.skill_list = ["take_notes", "read_notes", "wikipedia"] # add new skills here
         
     
     def choose_skill(self, skill: str):
@@ -11,6 +14,12 @@ class Skills:
             self.take_note()
         if skill == "read_notes":
             self.read_notes()
+        if skill == "wikipedia":
+            self.wikipedia()
+
+    def get_skills(self):
+        "return skill list"
+        return self.skill_list
 
     def write_to_file(self, filename: str, data: list):
         # Generic file writing function
@@ -39,8 +48,14 @@ class Skills:
         # List all notes in file
         notes = self.read_from_file(self.notes_file)
         for count, value in enumerate(notes):
-            print(f"{count + 1}: {value}") 
+            print(f"{count + 1}: {value}")
 
+    def wikipedia(self):
+        query = input("you: ")
+
+        query_list = wikipedia.search(f"{query}", 10)
+        summary = wikipedia.summary(query_list[0], 2, auto_suggest=False)
+        print(summary)
 
 
 if __name__ == "__main__":
