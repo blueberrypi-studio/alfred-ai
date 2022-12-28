@@ -1,3 +1,11 @@
+"""
+Alfred AI version 2
+same as version 1, built into a gui
+@author: Haydn Boul
+@date: 27-12-22
+"""
+
+import threading
 import tkinter as tk
 
 # TODO: Remove this to a .conf or similar file
