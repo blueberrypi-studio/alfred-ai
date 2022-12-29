@@ -46,7 +46,6 @@ class Application(tk.Frame):
         self.entry_field.pack()
         self.root.bind('<Return>', self.parse)
         
-
         self.main_container.pack(fill="both", expand=True)
         self.heading_container.pack(fill="both")
         self.response_container.pack(fill="both", expand=True)
@@ -57,10 +56,13 @@ class Application(tk.Frame):
         self.root.iconphoto(False, p1)
 
     def parse(self, event):
+        # TODO: interface this with bot, rather than just update with inputted text
         self.response_field.config(text=self.entry_field.get())
 
     def start(self):
+        """Starts The application"""
+        
         self.root.mainloop()
 
 
-Application().start()
+bot1 = Application().start()
