@@ -1,7 +1,7 @@
 # alfred-ai
 
 ```
-current version = 1.0
+current version = 2.0
 ```
 ## Version 2
 Bag of Words Algorithim
