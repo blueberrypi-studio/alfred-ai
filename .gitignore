@@ -6,3 +6,5 @@
 
 # Ignore all torch models (run training scripts to generate)
 *.pth
+
+*notes.txt
