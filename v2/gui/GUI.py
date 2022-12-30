@@ -18,10 +18,11 @@ BACKGROUND_COLOUR = "black"
 FOREGROUND_COLOUR = "white"
 
 class Application(tk.Frame):
-    def __init__(self, bot_name):
+    def __init__(self, brain, bot_name):
         self.root = tk.Tk()
         self.root.title(WINDOW_TITLE)
         self.root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
+        self.brain = brain
         self.bot_name = bot_name
         # keep on top of other windows, regardless of focus  
         if HOLD_TOP_LAYER: self.root.attributes("-topmost", 1)
@@ -52,13 +53,14 @@ class Application(tk.Frame):
         self.entry_container.pack(fill="both", expand=False)
 
         # change window icon
-        p1 = tk.PhotoImage(file = 'v2/images/icon.png')
+        p1 = tk.PhotoImage(file = 'images/icon.png')
         self.root.iconphoto(False, p1)
 
     def parse(self, event):
         # TODO: interface this with bot, rather than just update with inputted text
         user_input = self.entry_field.get()
-        self.response_field.config(text=user_input)
+        response = self.brain.request(user_input)
+        self.response_field.config(text=response)
         
 
     def start(self):

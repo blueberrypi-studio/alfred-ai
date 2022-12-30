@@ -34,38 +34,33 @@ class Brain():
         self.model.load_state_dict(self.model_state)
         self.model.eval()
 
-    def event_loop(self):
-        print("Let's chat! (type 'quit' to exit)")
-        while True:
-            sentence = input("You: ")
-            if sentence == "quit":
-                break
+    def request(self, sentence):
+            
+        sentence = tokenize(sentence)
+        X = bag_of_words(sentence, self.all_words)
+        X = X.reshape(1, X.shape[0])
+        X = torch.from_numpy(X)
 
-            sentence = tokenize(sentence)
-            X = bag_of_words(sentence, self.all_words)
-            X = X.reshape(1, X.shape[0])
-            X = torch.from_numpy(X)
+        output = self.model(X)
+        _, predicted = torch.max(output, dim=1)
 
-            output = self.model(X)
-            _, predicted = torch.max(output, dim=1)
+        tag = self.tags[predicted.item()]
 
-            tag = self.tags[predicted.item()]
+        probs = torch.softmax(output, dim=1)
+        prob = probs[0][predicted.item()]
+        if prob.item() > 0.75:
+            for intent in self.intents['intents']:
+                if tag == intent["tag"]:
+                    response = f"{random.choice(intent['responses'])}\n"
+                    if tag in self.skills:
+                        # print(tag)
 
-            probs = torch.softmax(output, dim=1)
-            prob = probs[0][predicted.item()]
-            if prob.item() > 0.75:
-                for intent in self.intents['intents']:
-                    if tag == intent["tag"]:
-                        print(f"{self.bot_name}: {random.choice(intent['responses'])}\n")
-                        if tag in self.skills:
-                            # print(tag)
+                        self.skills.choose_skill(tag)
+                                    
+        else:
+            response = f"{self.bot_name}: I do not understand..."
 
-                            self.skills.choose_skill(tag)
-                        
-                            
-                    
-            else:
-                print(f"{self.bot_name}: I do not understand...")
+        return response
 
 
 if __name__ == "__main__":
