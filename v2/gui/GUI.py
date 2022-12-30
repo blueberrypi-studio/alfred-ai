@@ -14,15 +14,15 @@ WINDOW_HEIGHT = 400
 WINDOW_TITLE = "Alfred AI"
 HOLD_TOP_LAYER = True
 
-BOT_NAME = "Alfred"
 BACKGROUND_COLOUR = "black"
 FOREGROUND_COLOUR = "white"
 
 class Application(tk.Frame):
-    def __init__(self):
+    def __init__(self, bot_name):
         self.root = tk.Tk()
         self.root.title(WINDOW_TITLE)
         self.root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
+        self.bot_name = bot_name
         # keep on top of other windows, regardless of focus  
         if HOLD_TOP_LAYER: self.root.attributes("-topmost", 1)
 
@@ -36,7 +36,7 @@ class Application(tk.Frame):
         self.response_container = tk.Frame(master=self.main_container, bg="green", padx=5, pady=5)
         self.entry_container = tk.Frame(master=self.main_container, bg="yellow")
 
-        self.name_tag = tk.Label(master=self.heading_container, text=BOT_NAME, bg=BACKGROUND_COLOUR, fg=FOREGROUND_COLOUR, font=("Arial", 25))
+        self.name_tag = tk.Label(master=self.heading_container, text=self.bot_name, bg=BACKGROUND_COLOUR, fg=FOREGROUND_COLOUR, font=("Arial", 25))
         self.name_tag.pack()
 
         self.response_field = tk.Label(master=self.response_container, text="Answer goes here")
@@ -57,7 +57,9 @@ class Application(tk.Frame):
 
     def parse(self, event):
         # TODO: interface this with bot, rather than just update with inputted text
-        self.response_field.config(text=self.entry_field.get())
+        user_input = self.entry_field.get()
+        self.response_field.config(text=user_input)
+        
 
     def start(self):
         """Starts The application"""
@@ -65,4 +67,5 @@ class Application(tk.Frame):
         self.root.mainloop()
 
 
-bot1 = Application().start()
+if __name__ == "__main__":
+    bot1 = Application().start()

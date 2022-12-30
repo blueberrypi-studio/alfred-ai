@@ -1,7 +1,7 @@
 import threading
 from time import sleep
 
-# from gui.GUI import Application
+from gui.GUI import Application
 from ai.brain import Brain
 
 
@@ -13,7 +13,8 @@ def main():
     brain_thread = threading.Thread(target=bot.event_loop())
     brain_thread.start()
     
-    # Application.start()
+    gui = Application()
+    gui.start()
     
     
 
