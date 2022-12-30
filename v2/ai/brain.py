@@ -7,13 +7,16 @@ import torch.nn as nn
 from ai.model import NeuralNet
 from ai.nltk_utils import bag_of_words, tokenize
 from ai.skills import Skills as sk
+from skills import * # import all skills
 
 
 class Brain():
     def __init__(self, bot_name):
         self.bot_name = bot_name
         self.sk = sk()
-        self.skills = self.sk.get_skills()
+
+        # code sourced from https://stackoverflow.com/a/51693418
+        self.skills = [x for x in globals() if hasattr(globals()[str(x)], '__custom__')]
 
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -53,9 +56,8 @@ class Brain():
                 if tag == intent["tag"]:
                     response = f"{random.choice(intent['responses'])}\n"
                     if tag in self.skills:
-                        # print(tag)
-
-                        self.skills.choose_skill(tag)
+                        m = globals()[tag]()
+                        func = getattr(m, tag.lower())()
                                     
         else:
             response = f"{self.bot_name}: I do not understand..."
@@ -65,7 +67,7 @@ class Brain():
 
 if __name__ == "__main__":
     alfred = Brain("Timmy")
-    alfred.event_loop()
+    alfred.request("Look something up for me?")
 
 
 

@@ -52,7 +52,7 @@
         ]
       },
       {
-          "tag":"take_notes",
+          "tag":"Take_Notes",
           "patterns": [
             "Take a note for me",
             "remember this for me",
@@ -68,7 +68,7 @@
           ]
       },
       {
-        "tag":"read_notes",
+        "tag":"Read_Notes",
         "patterns": [
           "Show me my notes",
           "remind me what i asked you to remember",
@@ -84,7 +84,7 @@
 
     },
     {
-      "tag": "wikipedia",
+      "tag": "Wikipedia",
       "patterns": [
         "Look something up for me",
         "Can you search this up?",
