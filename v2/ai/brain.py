@@ -6,14 +6,12 @@ import torch.nn as nn
 
 from ai.model import NeuralNet
 from ai.nltk_utils import bag_of_words, tokenize
-from ai.skills import Skills as sk
 from skills import * # import all skills
 
 
 class Brain():
     def __init__(self, bot_name):
         self.bot_name = bot_name
-        self.sk = sk()
 
         # code sourced from https://stackoverflow.com/a/51693418
         self.skills = [x for x in globals() if hasattr(globals()[str(x)], '__custom__')]
