@@ -33,12 +33,12 @@ class Application(tk.Frame):
     def create_widgets(self):
         
         self.main_container = tk.Frame(bg="purple", padx=5, pady=5)
-        self.heading_container = tk.Frame(master=self.main_container, bg="blue", padx=5, pady=5)
+        self.heading_container = tk.Frame(master=self.main_container, bg="yellow", padx=5, pady=5)
         self.response_container = tk.Frame(master=self.main_container, bg="green", padx=5, pady=5)
         self.entry_container = tk.Frame(master=self.main_container, bg="yellow")
 
         self.name_tag = tk.Label(master=self.heading_container, text=self.bot_name, bg=BACKGROUND_COLOUR, fg=FOREGROUND_COLOUR, font=("Arial", 25))
-        self.name_tag.pack()
+        self.name_tag.pack(anchor="center")
 
         self.response_field = tk.Label(master=self.response_container, text="Answer goes here")
         self.response_field.pack()
@@ -48,9 +48,10 @@ class Application(tk.Frame):
         self.root.bind('<Return>', self.parse)
         
         self.main_container.pack(fill="both", expand=True)
-        self.heading_container.pack(fill="both")
-        self.response_container.pack(fill="both", expand=True)
-        self.entry_container.pack(fill="both", expand=False)
+        self.heading_container.place(rely=.5, relx=.5, anchor="center")
+        self.entry_container.pack(fill="both", expand=False, side="bottom")
+        self.response_container.pack(fill="both", expand=False, side="bottom")
+        
 
         # change window icon
         p1 = tk.PhotoImage(file = 'images/icon.png')

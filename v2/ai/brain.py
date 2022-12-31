@@ -56,14 +56,14 @@ class Brain():
         if prob.item() > 0.75:
             for intent in self.intents['intents']:
                 if tag == intent["tag"]:
-                    response = f"{random.choice(intent['responses'])}\n"
+                    response = f"{random.choice(intent['responses'])}"
                     
                     if tag in self.skills:
                         
                         m = globals()[tag](self, self.gui)
                         
                         func = getattr(m, tag.lower())
-                        print("I ran")
+                        print("Skill activated")
                         response = func()
                                     
         else:
