@@ -10,8 +10,9 @@ from skills import * # import all skills
 
 
 class Brain():
-    def __init__(self, bot_name):
+    def __init__(self, bot_name, gui=None):
         self.bot_name = bot_name
+        self.gui = gui
 
         # code sourced from https://stackoverflow.com/a/51693418
         self.skills = [x for x in globals() if hasattr(globals()[str(x)], '__custom__')]
@@ -35,6 +36,9 @@ class Brain():
         self.model.load_state_dict(self.model_state)
         self.model.eval()
 
+    def set_gui(self, gui):
+        self.gui = gui
+    
     def request(self, sentence):
             
         sentence = tokenize(sentence)
@@ -53,9 +57,14 @@ class Brain():
             for intent in self.intents['intents']:
                 if tag == intent["tag"]:
                     response = f"{random.choice(intent['responses'])}\n"
+                    
                     if tag in self.skills:
-                        m = globals()[tag]()
-                        func = getattr(m, tag.lower())()
+                        
+                        m = globals()[tag](self, self.gui)
+                        
+                        func = getattr(m, tag.lower())
+                        print("I ran")
+                        response = func()
                                     
         else:
             response = f"{self.bot_name}: I do not understand..."

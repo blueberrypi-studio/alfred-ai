@@ -1,9 +1,7 @@
+from skills import A_Skill
 
-class Read_Notes():
+class Read_Notes(A_Skill):
     __custom__ = True
-    def __init__(self) -> None:
-        self.filename = "data/notes.txt"
-
 
     def read_from_file(self, filename: str) -> list:
         # Generic file reading function
@@ -16,6 +14,6 @@ class Read_Notes():
 
     def read_notes(self):
         # List all notes in file
-        notes = self.read_from_file(self.filename)
+        notes = self.read_from_file("data/notes.txt")
         for count, value in enumerate(notes):
             print(f"{count + 1}: {value}")

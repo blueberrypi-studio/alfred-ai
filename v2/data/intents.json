@@ -95,6 +95,17 @@
         "What would you like me to look up for you?", 
         "Wikipedia is ready and waiting..."
       ]
+    },
+    {
+      "tag": "Todays_Schedule",
+      "patterns": [
+        "Whats happening in the NHL today?",
+        "What are today's scores?",
+        "Whats the NHL Schedule today?"
+      ],
+      "responses": [
+        "Here's what's happening in the NHL today."
+      ]
     }
     ]
   }

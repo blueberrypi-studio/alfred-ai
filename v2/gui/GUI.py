@@ -9,8 +9,8 @@ import threading
 import tkinter as tk
 
 # TODO: Remove this to a .conf or similar file
-WINDOW_WIDTH = 300
-WINDOW_HEIGHT = 400
+WINDOW_WIDTH = 1500
+WINDOW_HEIGHT = 800
 WINDOW_TITLE = "Alfred AI"
 HOLD_TOP_LAYER = True
 
