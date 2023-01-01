@@ -3,17 +3,19 @@ from config.config import Config
 
 class A_Skill():
     def __init__(self, bot, gui):
+        config = Config.read_config()
         self.DEBUG = True
+        self.background_colour = config['GUI Colours']['background_colour']
+        self.foreground_colour = config['GUI Colours']['foreground_colour']
+        self.widget_colour = config['GUI Colours']['widget_colour']
 
         self.bot = bot
         self.gui = gui
         self.skill_name = None
-        config = Config.read_config()
-
-        self.background_colour = config['GUI Colours']['background_colour']
-        self.foreground_colour = config['GUI Colours']['foreground_colour']
-        self.widget_colour = config['GUI Colours']['widget_colour']
         
+        self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
+        self.gui.widgets_in_use.append(self)
+
 
     def draw_widget(self):
         self.widget_frame = tk.Frame(self.gui.main_container, bg="purple", padx=5, pady=5)
@@ -25,3 +27,8 @@ class A_Skill():
     def set_name(self, name):
         """sets the name of the skill"""
         self.skill_name = name
+
+    def close_widget(self):
+        """closes the widget"""
+        self.widget_frame.destroy()
+

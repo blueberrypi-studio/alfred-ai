@@ -26,7 +26,7 @@ class Application(tk.Frame):
         self.bot_name = bot_name
         # keep on top of other windows, regardless of focus  
         if HOLD_TOP_LAYER: self.root.attributes("-topmost", 1)
-
+        self.widgets_in_use = []
         tk.Frame.__init__(self, self.root)
         self.create_widgets()
 

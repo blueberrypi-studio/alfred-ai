@@ -3,6 +3,9 @@ import tkinter as tk
 from skills import A_Skill
 
 
+
+
+
 class Todays_Schedule(A_Skill):
     __custom__ = True
            
@@ -13,25 +16,28 @@ class Todays_Schedule(A_Skill):
 
     def draw_widget(self, game_list):
 
-        self.widget_frame = tk.Frame(self.gui.main_container, bg="white", padx=5, pady=5)
-        self.content_frame = tk.Frame(self.widget_frame, bg="black")
+        self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
-        self.widget_title = tk.Label(self.content_frame, text=self.skill_name).grid(row=0, column=0, columnspan=2)
+        self.widget_title = tk.Label(self.content_frame, text=self.skill_name)
+        self.widget_title.grid(row=0, column=0, columnspan=2)
         
         row = 1
         column = 0
 
         for game in game_list:
-            game_box = tk.Frame(self.content_frame, padx=5, pady=5)
-            time_label = tk.Label(game_box, text=f"{game[0]}: {game[1]}")
+            game_box_border = tk.Frame(self.content_frame, padx=1, pady=1,bg=self.foreground_colour)
+            game_box = tk.Frame(game_box_border, padx=5, pady=5,bg=self.background_colour)
+            time_label = tk.Label(game_box, text=f"{game[0]}: {game[1]}", bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
             time_label.pack()
-            home_team_label = tk.Label(game_box, text=game[2], bg="black", fg="white", padx=5, pady=5)
+            home_team_label = tk.Label(game_box, text=game[2], bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
             home_team_label.pack()
 
-            away_team_label = tk.Label(game_box, text=game[3], bg="black", fg="white", padx=5, pady=5)
+            away_team_label = tk.Label(game_box, text=game[3], bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
             away_team_label.pack()
 
-            game_box.grid(row=row, column=column)
+            game_box.pack()
+            game_box_border.grid(row=row, column=column)
+            game_box_border.columnconfigure(0, weight=1)
 
             column += 1
             if column >= 2:
@@ -40,10 +46,6 @@ class Todays_Schedule(A_Skill):
 
         self.content_frame.pack()
         self.widget_frame.place(x=100, y=100)
-        
-            
-
-        
         
         
     def todays_schedule(self):
@@ -77,7 +79,7 @@ class Todays_Schedule(A_Skill):
                 print(game)
 
         self.draw_widget(todays_games)
-        return todays_games
+        # return todays_games
         
 
 

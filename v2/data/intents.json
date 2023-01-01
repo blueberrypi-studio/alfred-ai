@@ -106,6 +106,20 @@
       "responses": [
         "Here's what's happening in the NHL today."
       ]
+    },
+    {
+      "tag": "Close_All",
+      "patterns": [
+        "Can you close all widgets for me?",
+        "Please close all widgets.",
+        "Remove all widgets please", 
+        "clear the screen",
+        "reset the screen please"
+      ],
+      "responses": [
+        "Certainly Sir, Closing all Widgets",
+        "Sure thing, all widgets are now closed"
+      ]
     }
     ]
   }
