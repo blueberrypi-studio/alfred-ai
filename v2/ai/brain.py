@@ -64,7 +64,10 @@ class Brain():
                         
                         func = getattr(m, tag.lower())
                         print("Skill activated")
-                        response = func()
+
+                        result = func()
+                        if result is not None:
+                            response = result
                                     
         else:
             response = f"{self.bot_name}: I do not understand..."
