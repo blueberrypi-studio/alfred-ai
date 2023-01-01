@@ -120,6 +120,18 @@
         "Certainly Sir, Closing all Widgets",
         "Sure thing, all widgets are now closed"
       ]
+    },
+    {
+      "tag": "Time",
+      "patterns": [
+        "What is the time?",
+        "can you tell me the time please?",
+        "what is the current time?"
+      ],
+      "responses": [
+        "Certainly Sir, here is the time",
+        "Check the widget for the current time"
+      ]
     }
     ]
   }
