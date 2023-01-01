@@ -10,8 +10,6 @@ class Close_All(A_Skill): # note capitalisation
         self.set_name("Close all widgets")
         
         for widget in self.gui.widgets_in_use:
-            print(widget)
-            print(self.gui.widgets_in_use)
             widget.close_widget()
         
             if self.DEBUG == True:

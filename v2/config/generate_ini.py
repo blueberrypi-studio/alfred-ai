@@ -11,6 +11,7 @@ config_file.set("GUI Colours", "foreground_colour", "white")
 config_file.set("GUI Colours", "widget_colour", "white")
 
 config_file.add_section("GUI Config")
+config_file.set("GUI Config", "DEBUG", "True")
 
 
 

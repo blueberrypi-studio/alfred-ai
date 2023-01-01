@@ -4,7 +4,7 @@ from config.config import Config
 class A_Skill():
     def __init__(self, bot, gui):
         config = Config.read_config()
-        self.DEBUG = True
+        self.DEBUG = config['GUI Config']['DEBUG']
         self.background_colour = config['GUI Colours']['background_colour']
         self.foreground_colour = config['GUI Colours']['foreground_colour']
         self.widget_colour = config['GUI Colours']['widget_colour']

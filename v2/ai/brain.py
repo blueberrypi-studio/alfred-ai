@@ -63,7 +63,7 @@ class Brain():
                         m = globals()[tag](self, self.gui)
                         
                         func = getattr(m, tag.lower())
-                        print("Skill activated")
+                        print(f"Skill run: {tag}")
 
                         result = func()
                         if result is not None:
