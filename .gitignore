@@ -7,4 +7,5 @@
 # Ignore all torch models (run training scripts to generate)
 *.pth
 
+# exclude notes.txt
 *notes.txt
