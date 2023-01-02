@@ -3,9 +3,6 @@ import tkinter as tk
 from skills import A_Skill
 
 
-
-
-
 class Todays_Schedule(A_Skill):
     __custom__ = True
            
@@ -15,6 +12,10 @@ class Todays_Schedule(A_Skill):
         return response.json()
 
     def draw_widget(self, game_list):
+        # store labels to update them later
+        self.home_team_labels = []
+        self.away_team_labels = []
+        self.time_labels = []
 
         self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
@@ -28,11 +29,14 @@ class Todays_Schedule(A_Skill):
             game_box_border = tk.Frame(self.content_frame, padx=1, pady=1,bg=self.foreground_colour)
             game_box = tk.Frame(game_box_border, padx=5, pady=5,bg=self.background_colour)
             time_label = tk.Label(game_box, text=f"{game[0]}: {game[1]}", bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
+            self.time_labels.append(time_label)
             time_label.pack()
             home_team_label = tk.Label(game_box, text=game[2], bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
+            self.home_team_labels.append(home_team_label)
             home_team_label.pack()
 
             away_team_label = tk.Label(game_box, text=game[3], bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
+            self.away_team_labels.append(away_team_label)
             away_team_label.pack()
 
             game_box.pack()
@@ -47,9 +51,7 @@ class Todays_Schedule(A_Skill):
         self.content_frame.pack()
         self.widget_frame.place(x=100, y=100)
         
-        
-    def todays_schedule(self):
-        self.set_name("NHL Schedule")
+    def update_schedule(self):
         todays_games = []
         data = self.get_request("https://statsapi.web.nhl.com/api/v1/schedule/?expand=schedule.linescore")
         sub_dict = data['dates'][0]
@@ -70,9 +72,27 @@ class Todays_Schedule(A_Skill):
             else:
                 time = data['currentPeriodTimeRemaining']
 
-
             game_score = (f"{period}",f"{time}", f"{home_team}: {home_score}", f"{away_team}: {away_score}")
             todays_games.append(game_score)
+        
+        return todays_games
+
+    def update_widgets(self):
+        """Update the text on the widgets"""
+        todays_games = self.update_schedule()
+        for i in range(len(self.home_team_labels)):
+            self.home_team_labels[i].config(text=todays_games[i][2])
+            self.away_team_labels[i].config(text=todays_games[i][3])
+            self.time_labels[i].config(text=f"{todays_games[i][0]}: {todays_games[i][1]}")
+
+        self.widget_frame.after(60000, self.update_widgets)
+
+    
+    
+    def todays_schedule(self):
+        self.set_name("NHL Schedule")
+        todays_games = self.update_schedule()
+
 
         if self.DEBUG == True:
             for game in todays_games:
@@ -80,6 +100,7 @@ class Todays_Schedule(A_Skill):
 
         self.draw_widget(todays_games)
         # return todays_games
+        self.widget_frame.after(1000, self.update_widgets)
         
 
 
