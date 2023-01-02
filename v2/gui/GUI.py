@@ -35,12 +35,16 @@ class Application(tk.Frame):
         self.main_container = tk.Frame(bg="purple", padx=5, pady=5)
         self.heading_container = tk.Frame(master=self.main_container, bg="yellow", padx=5, pady=5)
         self.response_container = tk.Frame(master=self.main_container, bg="green", padx=5, pady=5)
-        self.entry_container = tk.Frame(master=self.main_container, bg="yellow")
+        self.past_input_container = tk.Frame(master=self.response_container, bg="blue", padx=5, pady=5)
+        self.entry_container = tk.Frame(master=self.response_container, bg="yellow", padx=5, pady=5)
 
         self.name_tag = tk.Label(master=self.heading_container, text=self.bot_name, bg=BACKGROUND_COLOUR, fg=FOREGROUND_COLOUR, font=("Arial", 25))
         self.name_tag.pack(anchor="center")
 
-        self.response_field = tk.Label(master=self.response_container, text="Answer goes here")
+        self.past_input_label = tk.Label(master=self.response_container, text="You: ")
+        self.past_input_label.pack()
+        
+        self.response_field = tk.Label(master=self.response_container, text=f"{self.bot_name}: Hi Sir, How can I help?")
         self.response_field.pack()
         
         self.entry_field = tk.Entry(master=self.entry_container, width=(WINDOW_WIDTH))
@@ -61,7 +65,9 @@ class Application(tk.Frame):
         # TODO: interface this with bot, rather than just update with inputted text
         user_input = self.entry_field.get()
         response = self.brain.request(user_input)
-        self.response_field.config(text=response)
+        self.past_input_label.config(text=f"You: {user_input}")
+        self.response_field.config(text=f"{self.bot_name}: {response}")
+        self.entry_field.delete(0, "end")
         
 
     def start(self):
