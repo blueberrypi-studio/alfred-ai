@@ -5,7 +5,6 @@ from skills import A_Skill
 
 class Todays_Schedule(A_Skill):
     __custom__ = True
-           
 
     def get_request(self, query_url):
         response = requests.get(query_url)
@@ -19,7 +18,7 @@ class Todays_Schedule(A_Skill):
 
         self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
-        self.widget_title = tk.Label(self.content_frame, text=self.skill_name)
+        self.widget_title = tk.Label(self.content_frame, text=self.skill_name, font=("Arial", 25), bg=self.background_colour, fg=self.foreground_colour)
         self.widget_title.grid(row=0, column=0, columnspan=2)
         
         row = 1
@@ -39,8 +38,8 @@ class Todays_Schedule(A_Skill):
             self.away_team_labels.append(away_team_label)
             away_team_label.pack()
 
-            game_box.pack()
-            game_box_border.grid(row=row, column=column)
+            game_box.pack(expand=True, fill="both")
+            game_box_border.grid(row=row, column=column, sticky="news")
             game_box_border.columnconfigure(0, weight=1)
 
             column += 1
