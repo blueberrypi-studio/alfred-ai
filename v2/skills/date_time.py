@@ -10,7 +10,7 @@ class Time(A_Skill): # note capitalisation
     def time(self): # note same name as class, but no capitals (same as tag name in intents.json)
         self.set_name("Time Module")
         self.draw_widget()
-        string = strftime('%H:%M:%S %p')
+        string = strftime('%-I:%M:%S %p')
         self.time_text.config(text=string)
         self.time_text.after(1000, self.update_time)
         
@@ -20,7 +20,7 @@ class Time(A_Skill): # note capitalisation
 
     def update_time(self):
         """updates the time label"""
-        string = strftime('%H:%M:%S %p')
+        string = strftime('%-I:%M:%S %p')
         self.time_text.config(text=string)
         self.time_text.after(1000, self.update_time)
 

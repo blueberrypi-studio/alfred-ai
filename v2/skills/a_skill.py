@@ -14,7 +14,10 @@ class A_Skill():
         self.skill_name = None
         
         self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
-        self.gui.widgets_in_use.append(self)
+        if self not in self.gui.widgets_in_use:
+            self.gui.widgets_in_use.append(self)
+        # else:
+        #     return f"You are already running the {self.skill_name}"
 
 
     def draw_widget(self):

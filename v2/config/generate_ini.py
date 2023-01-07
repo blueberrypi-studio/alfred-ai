@@ -3,6 +3,14 @@ import configparser
 # CREATE OBJECT
 config_file = configparser.ConfigParser()
 
+config_file.add_section("General Settings")
+config_file.set("General Settings","bot_name", "Alfred")
+config_file.set("General Settings","window_title", "Alfred Ai")
+config_file.set("General Settings","window_width", "1500")
+config_file.set("General Settings","window_height", "800")
+config_file.set("General Settings","hold_top_layer", "True")
+
+
 # ADD SECTION
 config_file.add_section("GUI Colours")
 # ADD SETTINGS TO SECTION
