@@ -132,6 +132,17 @@
         "Certainly Sir, here is the time",
         "Check the widget for the current time"
       ]
+    },
+    {
+      "tag": "Date",
+      "patterns": [
+        "What is the date?",
+        "can you tell me the date please?"
+      ],
+      "responses": [
+        "Certainly Sir, here is the date",
+        "Check the widget for the current date"
+      ]
     }
     ]
   }
