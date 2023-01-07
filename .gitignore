@@ -11,10 +11,6 @@
 # exclude notes.txt
 *notes.txt
 
-<<<<<<< HEAD
-# ignore openai
+*openai
 
-# *openai
-=======
-*pytorch-learnings/
->>>>>>> eb2292cb69969fe81bb6fdea47772162265030af
+*secret_key.txt
