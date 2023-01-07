@@ -7,11 +7,13 @@ BOT_NAME = "Alfred"
 
         
 def main():
+    """run the bot"""
     config = Config.read_config()
-    # Config.print_config()
+
     bot = Brain(BOT_NAME)
     gui = Application(bot, BOT_NAME)
     bot.set_gui(gui)
+
     gui.start()
     
     

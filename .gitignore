@@ -9,3 +9,7 @@
 
 # exclude notes.txt
 *notes.txt
+
+# ignore openai
+
+# *openai

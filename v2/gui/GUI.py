@@ -49,6 +49,7 @@ class Application(tk.Frame):
         
         self.entry_field = tk.Entry(master=self.entry_container, width=(WINDOW_WIDTH))
         self.entry_field.pack()
+        self.entry_field.focus_set()
         self.root.bind('<Return>', self.parse)
         
         self.main_container.pack(fill="both", expand=True)
