@@ -39,18 +39,18 @@ class Application(tk.Frame):
         self.input_box = tk.Frame(master=self.main_container, bg=self.widget_colour, padx=5, pady=5)
         self.response_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
         self.past_input_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
-        self.entry_container = tk.Frame(master=self.input_box, bg="yellow", padx=5, pady=5)
+        self.entry_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
 
         self.name_tag = tk.Label(master=self.heading_container, text=self.bot_name, bg=self.background_colour, fg=self.foreground_colour, font=("Arial", 25))
         self.name_tag.pack(anchor="center")
 
-        self.past_input_label = tk.Label(master=self.past_input_container, text="You: ")
+        self.past_input_label = tk.Label(master=self.past_input_container, bg=self.background_colour, fg=self.foreground_colour, text="You: ", font=("Arial", 15))
         self.past_input_label.pack(side="left")
         
-        self.response_field = tk.Label(master=self.response_container, text=f"{self.bot_name}: Hi Sir, How can I help?")
+        self.response_field = tk.Label(master=self.response_container, bg=self.background_colour, fg=self.foreground_colour, text=f"{self.bot_name}: Hi Sir, How can I help?", font=("Arial", 15))
         self.response_field.pack(side="left")
         
-        self.entry_field = tk.Entry(master=self.entry_container, width=self.window_width)
+        self.entry_field = tk.Entry(master=self.entry_container, width=self.window_width, font=("Arial", 15))
         self.entry_field.pack()
         self.entry_field.focus_set()
         self.root.bind('<Return>', self.parse)
