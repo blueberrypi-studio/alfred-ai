@@ -1,7 +1,7 @@
 {
     "intents": [
       {
-        "tag": "greeting",
+        "tag": "Greeting",
         "patterns": [
           "Hi",
           "Hey",
@@ -18,7 +18,7 @@
         ]
       },
       {
-        "tag": "goodbye",
+        "tag": "Goodbye",
         "patterns": [
             "Bye", 
             "See you later", 
@@ -33,12 +33,12 @@
         ]
       },
       {
-        "tag": "thanks",
+        "tag": "Thanks",
         "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
         "responses": ["Happy to help!", "Any time!", "My pleasure"]
       },
       {
-        "tag": "funny",
+        "tag": "Funny",
         "patterns": [
           "Tell me a joke!",
           "Tell me something funny!",
