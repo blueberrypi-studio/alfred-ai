@@ -6,10 +6,15 @@
 
 # Ignore all torch models (run training scripts to generate)
 *.pth
+*.pt
 
 # exclude notes.txt
 *notes.txt
 
+<<<<<<< HEAD
 # ignore openai
 
 # *openai
+=======
+*pytorch-learnings/
+>>>>>>> eb2292cb69969fe81bb6fdea47772162265030af

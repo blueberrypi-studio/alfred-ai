@@ -17,7 +17,8 @@ class Brain():
         # code sourced from https://stackoverflow.com/a/51693418
         self.skills = [x for x in globals() if hasattr(globals()[str(x)], '__custom__')]
 
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        # self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = "cpu"
 
         with open('data/intents.json') as json_data:
             self.intents = json.load(json_data)
@@ -42,9 +43,11 @@ class Brain():
     def request(self, sentence):
             
         sentence = tokenize(sentence)
+        sentence
         X = bag_of_words(sentence, self.all_words)
         X = X.reshape(1, X.shape[0])
         X = torch.from_numpy(X)
+        
 
         output = self.model(X)
         _, predicted = torch.max(output, dim=1)
