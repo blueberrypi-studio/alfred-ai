@@ -3,10 +3,10 @@ import tkinter as tk
 from skills import A_Skill
 
 
-class Close_All(A_Skill): # note capitalisation
+class Close_All(A_Skill): 
     __custom__ = True     
         
-    def close_all(self): # note same name as class, but no capitals (same as tag name in intents.json)
+    def close_all(self): 
         self.set_name("Close all widgets")
         
         for widget in self.gui.widgets_in_use:

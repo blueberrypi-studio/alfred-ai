@@ -18,7 +18,7 @@ class Todays_Schedule(A_Skill):
 
         self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
-        self.widget_title = tk.Label(self.content_frame, text=self.skill_name, font=("Arial", 25), bg=self.background_colour, fg=self.foreground_colour)
+        self.widget_title = tk.Label(self.content_frame, text=self.skill_name, font=("Arial", 25), bg=self.background_colour, fg=self.foreground_colour, pady=5)
         self.widget_title.grid(row=0, column=0, columnspan=2)
         
         row = 1
@@ -27,7 +27,7 @@ class Todays_Schedule(A_Skill):
         for game in game_list:
             game_box_border = tk.Frame(self.content_frame, padx=1, pady=1,bg=self.foreground_colour)
             game_box = tk.Frame(game_box_border, padx=5, pady=5,bg=self.background_colour)
-            time_label = tk.Label(game_box, text=f"{game[0]}: {game[1]}", bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
+            time_label = tk.Label(game_box, text=f"{game[1]} {game[0]}", bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
             self.time_labels.append(time_label)
             time_label.pack()
             home_team_label = tk.Label(game_box, text=game[2], bg=self.background_colour, fg=self.foreground_colour, padx=5, pady=5)
@@ -65,7 +65,7 @@ class Todays_Schedule(A_Skill):
             home_score = data['teams']['home']['goals']
             away_score = data['teams']['away']['goals']
 
-            period = data['currentPeriod']
+            period = data['currentPeriodOrdinal']
             if period == 0:
                 time="not yet started"
             else:
@@ -82,7 +82,7 @@ class Todays_Schedule(A_Skill):
         for i in range(len(self.home_team_labels)):
             self.home_team_labels[i].config(text=todays_games[i][2])
             self.away_team_labels[i].config(text=todays_games[i][3])
-            self.time_labels[i].config(text=f"{todays_games[i][0]}: {todays_games[i][1]}")
+            self.time_labels[i].config(text=f"{todays_games[i][1]} {todays_games[i][0]}")
 
         self.widget_frame.after(60000, self.update_widgets)
 

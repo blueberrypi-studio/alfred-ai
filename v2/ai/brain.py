@@ -4,15 +4,18 @@ import json
 import torch
 import torch.nn as nn
 
+import pyttsx3
+
 from ai.model import NeuralNet
 from ai.nltk_utils import bag_of_words, tokenize
 from skills import * # import all skills
 
 
 class Brain():
-    def __init__(self, bot_name, gui=None):
+    def __init__(self, bot_name, config, gui=None):
         self.bot_name = bot_name
         self.gui = gui
+        self.config = config
 
         # code sourced from https://stackoverflow.com/a/51693418
         self.skills = [x for x in globals() if hasattr(globals()[str(x)], '__custom__')]
@@ -37,8 +40,21 @@ class Brain():
         self.model.load_state_dict(self.model_state)
         self.model.eval()
 
+        self.engine = pyttsx3.init()
+        self.speak = self.config['General Settings']['speak']
+        self.engine.setProperty('rate', 175)
+        voices = self.engine.getProperty('voices')
+        self.engine.setProperty('voice', voices[2].id)
+        
+
     def set_gui(self, gui):
         self.gui = gui
+
+    def say(self, response):
+        if self.speak == "True":
+            self.engine.say(response)
+            self.engine.runAndWait()
+            self.engine.stop()
     
     def request(self, sentence):
             
@@ -73,8 +89,9 @@ class Brain():
                             response = result
                                     
         else:
-            response = f"{self.bot_name}: I do not understand..."
-
+            response = f"I do not understand..."
+        
+        self.say(response)
         return response
 
 

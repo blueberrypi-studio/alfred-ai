@@ -9,6 +9,7 @@ config_file.set("General Settings","window_title", "Alfred Ai")
 config_file.set("General Settings","window_width", "1500")
 config_file.set("General Settings","window_height", "800")
 config_file.set("General Settings","hold_top_layer", "True")
+config_file.set("General Settings","speak", "True")
 
 
 # ADD SECTION

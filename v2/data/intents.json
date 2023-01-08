@@ -143,6 +143,18 @@
         "Certainly Sir, here is the date",
         "Check the widget for the current date"
       ]
+    },
+    {
+      "tag": "Network_Status",
+      "patterns": [
+        "What is the status of my network?",
+        "are all my systems online?",
+        "is my network working?"
+      ],
+      "responses": [
+        "Certainly Sir, I have checked your network for you",
+        "Check the widget for the current network status"
+      ]
     }
     ]
   }

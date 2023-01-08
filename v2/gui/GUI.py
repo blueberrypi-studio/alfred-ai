@@ -27,7 +27,7 @@ class Application(tk.Frame):
         self.widget_colour = self.config['GUI Colours']['widget_colour']
 
         # keep on top of other windows, regardless of focus  
-        if self.config['General Settings']['hold_top_layer']: self.root.attributes("-topmost", 1)
+        if self.config['General Settings']['hold_top_layer'] == "True": self.root.attributes("-topmost", 1)
         self.widgets_in_use = []
         tk.Frame.__init__(self, self.root)
         self.create_widgets()
@@ -35,14 +35,18 @@ class Application(tk.Frame):
     def create_widgets(self):
         
         self.main_container = tk.Frame(bg=self.background_colour, padx=5, pady=5)
-        self.heading_container = tk.Frame(master=self.main_container, bg=self.widget_colour, padx=5, pady=5)
+        self.heading_container = tk.Frame(master=self.main_container, padx=5, pady=5, bg=self.background_colour)
         self.input_box = tk.Frame(master=self.main_container, bg=self.widget_colour, padx=5, pady=5)
         self.response_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
         self.past_input_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
         self.entry_container = tk.Frame(master=self.input_box, bg=self.background_colour, padx=5, pady=5)
 
-        self.name_tag = tk.Label(master=self.heading_container, text=self.bot_name, bg=self.background_colour, fg=self.foreground_colour, font=("Arial", 25))
-        self.name_tag.pack(anchor="center")
+        self.canvas = tk.Canvas(self.heading_container, width=300, height=300, borderwidth=0, highlightthickness=0, bg=self.background_colour)
+        
+        self.canvas.create_oval(25,25,275,275,outline=self.widget_colour, width=5)
+        self.canvas.pack(anchor="center")
+
+        self.canvas.create_text(150, 150, font=("Arial", 50), text=self.bot_name, fill=self.foreground_colour)
 
         self.past_input_label = tk.Label(master=self.past_input_container, bg=self.background_colour, fg=self.foreground_colour, text="You: ", font=("Arial", 15))
         self.past_input_label.pack(side="left")
@@ -63,11 +67,10 @@ class Application(tk.Frame):
         self.past_input_container.pack(fill="both", expand=False, side="top")
         self.response_container.pack(fill="both", expand=False, side="bottom")
         
-        
-
         # change window icon
         p1 = tk.PhotoImage(file = 'images/icon.png')
         self.root.iconphoto(False, p1)
+
 
     def parse(self, event):
         # TODO: interface this with bot, rather than just update with inputted text

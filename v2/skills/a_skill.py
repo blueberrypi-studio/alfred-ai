@@ -4,7 +4,11 @@ from config.config import Config
 class A_Skill():
     def __init__(self, bot, gui):
         config = Config.read_config()
-        self.DEBUG = config['GUI Config']['DEBUG']
+
+        debug = config['GUI Config']['DEBUG']
+        if debug == "True": self.DEBUG = True
+        else: self.DEBUG = False
+
         self.background_colour = config['GUI Colours']['background_colour']
         self.foreground_colour = config['GUI Colours']['foreground_colour']
         self.widget_colour = config['GUI Colours']['widget_colour']
@@ -14,10 +18,17 @@ class A_Skill():
         self.skill_name = None
         
         self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
-        if self not in self.gui.widgets_in_use:
-            self.gui.widgets_in_use.append(self)
-        # else:
-        #     return f"You are already running the {self.skill_name}"
+
+        self.gui.widgets_in_use.append(self)
+
+        # for widget in self.gui.widgets_in_use:
+        #     print(self.gui.widgets_in_use)
+        #     if type(widget) == type(self):
+        #         del(self)
+        #         return f"You are already running the"
+
+
+
 
 
     def draw_widget(self):
