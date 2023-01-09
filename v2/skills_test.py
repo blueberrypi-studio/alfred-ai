@@ -4,8 +4,8 @@ from google.oauth2.credentials import Credentials
 # redirect URI. You can obtain these values by creating a new OAuth 2.0
 # client ID on the Google API Console:
 #   https://console.developers.google.com/apis/credentials
-CLIENT_ID = '910538001739-jec7ddi34g1uv334cog3fjgs1l8krqjb.apps.googleusercontent.com'
-CLIENT_SECRET = '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'
+CLIENT_ID = ''
+CLIENT_SECRET = ''
 REDIRECT_URI = 'YOUR_REDIRECT_URI'
 
 # Use the client ID, client secret, and redirect URI to create an OAuth 2.0
