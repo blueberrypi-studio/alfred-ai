@@ -12,7 +12,7 @@ games_list = sub_dict['games']
 
 for game_info in games_list:
     data = game_info["linescore"]
-    print(data)
+    # print(data)
 
     home_team = data['teams']['home']['team']['name']
     away_team = data['teams']['away']['team']['name']
@@ -20,8 +20,9 @@ for game_info in games_list:
     home_score = data['teams']['home']['goals']
     away_score = data['teams']['away']['goals']
 
-    period = data['currentPeriodOrdinal']
-    if period == 0:
+    try:
+        period = data['currentPeriodOrdinal']
+    except KeyError:
         time="not yet started"
     else:
         time = data['currentPeriodTimeRemaining']

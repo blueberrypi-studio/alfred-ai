@@ -65,8 +65,9 @@ class Todays_Schedule(A_Skill):
             home_score = data['teams']['home']['goals']
             away_score = data['teams']['away']['goals']
 
-            period = data['currentPeriodOrdinal']
-            if period == 0:
+            try:
+                period = data['currentPeriodOrdinal']
+            except KeyError:
                 time="not yet started"
             else:
                 time = data['currentPeriodTimeRemaining']
