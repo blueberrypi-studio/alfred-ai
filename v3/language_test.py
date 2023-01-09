@@ -184,6 +184,8 @@ test_data = data_process(test_iter)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+print(device)
+
 def batchify(data: Tensor, bsz: int) -> Tensor:
     """Divides the data into bsz separate sequences, removing extra elements
     that wouldn't cleanly fit.
@@ -349,10 +351,10 @@ for epoch in range(1, epochs + 1):
     val_loss = evaluate(model, val_data)
     val_ppl = math.exp(val_loss)
     elapsed = time.time() - epoch_start_time
-    print('-' * 89)
+    print('-' * 90)
     print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | '
-          f'valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f}')
-    print('-' * 89)
+          f'valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f} |')
+    print('-' * 90)
 
     if val_loss < best_val_loss:
         best_val_loss = val_loss
@@ -366,9 +368,41 @@ for epoch in range(1, epochs + 1):
 # -------------------------------------------
 #
 
+
+
+
 test_loss = evaluate(best_model, test_data)
 test_ppl = math.exp(test_loss)
 print('=' * 89)
 print(f'| End of training | test loss {test_loss:5.2f} | '
       f'test ppl {test_ppl:8.2f}')
 print('=' * 89)
+
+torch.save(best_model, 'model.pth')
+
+# # Load the trained model
+# model = torch.load('model.pth', map_location=torch.device('cpu'))
+
+
+# # Set the model to evaluation mode
+# model.eval()
+
+# # Create a prompt or a question
+# prompt = "What is the capital of France?"
+
+# # Encode the prompt as a tensor
+# input_ids = torch.tensor(tokenizer.encode(prompt)).unsqueeze(0)  # Batch size 1
+
+# # Generate a response
+# output = model(input_ids)
+
+# # Get the predicted next token
+# predicted_next_token = torch.argmax(output[0, -1, :]).item()
+
+# # Decode the predicted next token
+# predicted_next_word = get_tokenizer.decode([predicted_next_token])
+
+# # Concatenate the prompt and the predicted next word
+# response = prompt + predicted_next_word
+
+# print(response)
