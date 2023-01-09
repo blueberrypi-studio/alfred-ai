@@ -1,5 +1,6 @@
 import random
 import json
+import threading
 
 import torch
 import torch.nn as nn
@@ -43,8 +44,8 @@ class Brain():
         self.engine = pyttsx3.init()
         self.speak = self.config['General Settings']['speak']
         self.engine.setProperty('rate', 175)
-        voices = self.engine.getProperty('voices')
-        self.engine.setProperty('voice', voices[2].id)
+        # voices = self.engine.getProperty('voices')
+        # self.engine.setProperty('voice', voices[1].id)
         
 
     def set_gui(self, gui):
@@ -55,6 +56,8 @@ class Brain():
             self.engine.say(response)
             self.engine.runAndWait()
             self.engine.stop()
+            return
+            
     
     def request(self, sentence):
             
@@ -91,7 +94,8 @@ class Brain():
         else:
             response = f"I do not understand..."
         
-        self.say(response)
+        self.thread = threading.Thread(target=self.say, args=(response,))
+        self.thread.start()
         return response
 
 
