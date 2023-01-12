@@ -67,10 +67,11 @@ class Todays_Schedule(A_Skill):
 
             try:
                 period = data['currentPeriodOrdinal']
+                time = data['currentPeriodTimeRemaining']
             except KeyError:
                 time="not yet started"
-            else:
-                time = data['currentPeriodTimeRemaining']
+                period=''
+                
 
             game_score = (f"{period}",f"{time}", f"{home_team}: {home_score}", f"{away_team}: {away_score}")
             todays_games.append(game_score)

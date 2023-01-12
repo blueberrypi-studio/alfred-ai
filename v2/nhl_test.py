@@ -24,6 +24,7 @@ for game_info in games_list:
         period = data['currentPeriodOrdinal']
     except KeyError:
         time="not yet started"
+        period = ""
     else:
         time = data['currentPeriodTimeRemaining']
 

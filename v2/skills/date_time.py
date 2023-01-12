@@ -16,6 +16,8 @@ class Time(A_Skill): # note capitalisation
         
         if self.DEBUG == True:
             print(string)
+
+        return f"The Current time is {strftime('%I:%M %p')}"
     
 
     def update_time(self):
@@ -50,6 +52,8 @@ class Date(A_Skill):
         
         if self.DEBUG == True:
             print(string)
+        response_string = string.replace("\n", " ")
+        return f"It is currently {response_string}"
 
     def update_date(self):
         """updates the time label"""
