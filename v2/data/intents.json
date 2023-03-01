@@ -155,6 +155,17 @@
         "Certainly Sir, I have checked your network for you",
         "Check the widget for the current network status"
       ]
+    },
+    {
+      "tag": "Earthquake_Alert",
+      "patterns": [
+        "What magnitude was that last earthquake?",
+        "how big was that last quake?",
+        "tell me about that earthquake?"
+      ],
+      "responses": [
+        "Certainly Sir, here are the earthquake details"
+      ]
     }
     ]
   }
