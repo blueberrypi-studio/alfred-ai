@@ -22,8 +22,8 @@ class Skill_Class(A_Skill): # note capitalisation
 
     def draw_widget(self):
         """draw a widget, can exclude this if needed (in parent class also)"""
-        self.widget_frame = tk.Frame(self.gui.main_container, bg="white", padx=5, pady=5)
-        self.content_frame = tk.Frame(self.widget_frame, bg="black")
+        self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
+        self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
         self.widget_title = tk.Label(self.content_frame, text=self.skill_name).pack()
 
