@@ -25,7 +25,7 @@ class Skill_Class(A_Skill): # note capitalisation
         self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
         self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
-        self.widget_title = tk.Label(self.content_frame, text=self.skill_name).pack()
+        self.widget_title = tk.Label(self.content_frame, text=self.skill_name, bg=self.background_colour, fg=self.foreground_colour).pack()
 
         self.widget_frame.place(x=100, y=100)
         self.content_frame.pack()
