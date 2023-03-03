@@ -38,13 +38,13 @@ class Earthquake_Alert(A_Skill): # note capitalisation
         
         self.widget_title = tk.Label(self.content_frame, text=self.skill_name, bg=self.background_colour, fg=self.foreground_colour).pack()
 
-        self.time_label = tk.Label(self.content_frame, text=self.time, bg=self.background_colour, fg=self.foreground_colour).pack()
-        self.magnitude_label = tk.Label(self.content_frame, text=self.magnitude, bg=self.background_colour, fg=self.foreground_colour).pack()
-        self.location_label = tk.Label(self.content_frame, text=self.location, bg=self.background_colour, fg=self.foreground_colour).pack()
-        self.depth_label = tk.Label(self.content_frame, text=self.depth, bg=self.background_colour, fg=self.foreground_colour).pack()
+        self.time_label = tk.Label(self.content_frame, text=self.time, bg=self.background_colour, fg=self.foreground_colour).pack(side="left")
+        self.magnitude_label = tk.Label(self.content_frame, text=self.magnitude, bg=self.background_colour, fg=self.foreground_colour).pack(side="left")
+        self.location_label = tk.Label(self.content_frame, text=self.location, bg=self.background_colour, fg=self.foreground_colour).pack(side="left")
+        self.depth_label = tk.Label(self.content_frame, text=self.depth, bg=self.background_colour, fg=self.foreground_colour).pack(side="left")
         
 
-        self.widget_frame.place(x=100, y=100)
+        self.widget_frame.place(x=1200, y=700)
         self.content_frame.pack()
         
 
