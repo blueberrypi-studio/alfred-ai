@@ -6,6 +6,8 @@
 from gui.GUI import Application
 from ai.brain import Brain
 from config.config import Config
+
+
 # =============================================
 
 # ================== Globals ==================
@@ -20,6 +22,8 @@ def main():
     bot.set_gui(gui)
 
     gui.start()
+
+    
     
     
 main()

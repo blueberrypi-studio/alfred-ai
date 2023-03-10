@@ -9,6 +9,7 @@ import threading
 import tkinter as tk
 
 from config.config import Config
+from alerts import *
 
 class Application(tk.Frame):
     def __init__(self, brain, bot_name):
@@ -30,8 +31,13 @@ class Application(tk.Frame):
         if self.config['General Settings']['hold_top_layer'] == "True": self.root.attributes("-topmost", 1)
         self.widgets_in_use = []
         self.alerts_in_use = []
+
+        # code sourced from https://stackoverflow.com/a/51693418
+        self.alerts = [x for x in globals() if hasattr(globals()[str(x)], '__alert__')]
+
         tk.Frame.__init__(self, self.root)
         self.create_widgets()
+        self.init_alerts()
 
     def create_widgets(self):
         
@@ -84,8 +90,23 @@ class Application(tk.Frame):
 
     def start(self):
         """Starts The application"""
-        
         self.root.mainloop()
+
+    def init_alerts(self):
+        for alert in self.alerts:
+            m = globals()[alert](self, self)             
+            func = getattr(m, alert.lower())
+            print(f"Alert Triggered: {alert}")
+            result = func()
+        print(self.alerts_in_use)
+
+        self.after(10*1000, self.check_for_alerts)
+
+    def check_for_alerts(self):
+        for alert in self.alerts_in_use:
+            if alert.check_for_update():
+                alert.draw_alert()
+        
 
 
 if __name__ == "__main__":

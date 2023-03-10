@@ -20,6 +20,7 @@ class Alert():
         self.bot = bot
         self.gui = gui
         self.alert_name = None
+        self.previous_alert_data = None
 
         self.alert_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
 
@@ -35,7 +36,7 @@ class Alert():
 
     def set_name(self, name):
         """sets the name of the skill"""
-        self.skill_name = name
+        self.alert_name = name
 
     def close_alert(self):
         """closes the widget"""
