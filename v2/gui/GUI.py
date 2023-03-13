@@ -105,7 +105,10 @@ class Application(tk.Frame):
     def check_for_alerts(self):
         for alert in self.alerts_in_use:
             if alert.check_for_update():
+                # print("I ran")
                 alert.draw_alert()
+        
+        self.after(10*1000, self.check_for_alerts)
         
 
 

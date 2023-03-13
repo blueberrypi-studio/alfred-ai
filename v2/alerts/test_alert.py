@@ -3,8 +3,8 @@ import requests
 
 from alerts import Alert
 
-# REQUEST_URL = "https://api.geonet.org.nz/quake?MMI=3"
-REQUEST_URL = "https://api.geonet.org.nz/quake?MMI=1"
+REQUEST_URL = "https://api.geonet.org.nz/quake?MMI=3"
+# REQUEST_URL = "https://api.geonet.org.nz/quake?MMI=1"
 
 class Earthquake_Alert(Alert):
     __alert__ = True # tag used to show this module is an alert
@@ -20,23 +20,19 @@ class Earthquake_Alert(Alert):
     def draw_alert(self):
         
         data = self.get_request(REQUEST_URL)
+        print("widget should show")
+        self.earthquake = data["features"][0]
+        self.magnitude = self.earthquake["properties"]["magnitude"]
+        self.location = self.earthquake["properties"]["locality"]
+        self.depth = self.earthquake["properties"]["depth"]
+        self.time = self.earthquake["properties"]["time"]
+        self.draw_widget()
 
-        if self.previous_alert_data is not None:
-            
-            if data != self.previous_alert_data:
-                print("widget should show")
-                self.earthquake = data["features"][0]
-                self.magnitude = self.earthquake["properties"]["magnitude"]
-                self.location = self.earthquake["properties"]["locality"]
-                self.depth = self.earthquake["properties"]["depth"]
-                self.time = self.earthquake["properties"]["time"]
-                self.draw_widget()
-                
-                if self.DEBUG == True:
-                    print(self.time)
-                    print(self.location)
-                    print(self.magnitude)
-                    print(self.depth)
+        if self.DEBUG == True:
+            print(self.time)
+            print(self.location)
+            print(self.magnitude)
+            print(self.depth)
         
         self.previous_alert_data = data
 
@@ -44,11 +40,14 @@ class Earthquake_Alert(Alert):
     def check_for_update(self):
         """check for new updates"""
         new_data = self.get_request(REQUEST_URL)
-        if new_data != self.previous_alert_data:
-            self.previous_alert_data = new_data
-            return True
-        else:
-            return False
+        if self.previous_alert_data is not None:
+            if new_data != self.previous_alert_data:
+                self.previous_alert_data = new_data
+                return True
+            else:
+                return False
+        self.previous_alert_data = new_data
+        return False
            
 
 
