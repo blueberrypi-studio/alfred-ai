@@ -7,6 +7,7 @@
 # Ignore all torch models (run training scripts to generate)
 *.pth
 *.pt
+*.env
 
 # exclude notes.txt
 *notes.txt
@@ -16,3 +17,5 @@
 *secret_key.txt
 
 *pytorch-learnings/
+
+*/node-modules

@@ -18,7 +18,6 @@ class A_Skill():
         self.skill_name = None
         
         self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
-
         self.gui.widgets_in_use.append(self)
 
         # for widget in self.gui.widgets_in_use:
@@ -44,5 +43,5 @@ class A_Skill():
 
     def close_widget(self):
         """closes the widget"""
-        self.widget_frame.destroy()
+        self.widget_frame.destroy() 
 

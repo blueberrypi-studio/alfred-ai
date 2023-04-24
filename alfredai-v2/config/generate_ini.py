@@ -17,7 +17,8 @@ config_file.add_section("GUI Colours")
 # ADD SETTINGS TO SECTION
 config_file.set("GUI Colours", "background_colour", "black")
 config_file.set("GUI Colours", "foreground_colour", "white")
-config_file.set("GUI Colours", "widget_colour", "white")
+config_file.set("GUI Colours", "widget_colour", "orange")
+config_file.set("GUI Colours", "alert_colour", "red")
 
 config_file.add_section("GUI Config")
 config_file.set("GUI Config", "DEBUG", "True")

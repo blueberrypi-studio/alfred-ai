@@ -30,7 +30,7 @@ class Time(A_Skill): # note capitalisation
 
     def draw_widget(self):
         """draw a widget, can exclude this if needed (in parent class also)"""
-        self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
+        # self.widget_frame = tk.Frame(self.gui.main_container, bg=self.widget_colour, padx=5, pady=5)
         self.content_frame = tk.Frame(self.widget_frame, bg=self.background_colour)
         
         self.time_text = tk.Label(self.content_frame, text="", font=("Arial", 25), fg=self.foreground_colour, bg=self.background_colour, padx=5, pady=5)

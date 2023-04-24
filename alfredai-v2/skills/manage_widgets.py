@@ -1,7 +1,5 @@
 import tkinter as tk
-
 from skills import A_Skill
-from alerts import Alert
 
 
 class Close_All(A_Skill): 
@@ -9,7 +7,8 @@ class Close_All(A_Skill):
         
     def close_all(self): 
         self.set_name("Close all widgets")
-        
+        print(f"Widgets in use: {self.gui.widgets_in_use}")
+        print(f"Alerts in use: {self.gui.alerts_in_use}")
         for widget in self.gui.widgets_in_use:
             widget.close_widget()
 
@@ -21,8 +20,10 @@ class Close_All(A_Skill):
                 print(f"{widget.skill_name} was closed")
                 
         self.gui.widgets_in_use = []
-        self.gui.alerts_in_use = []
-        
+        # self.gui.alerts_in_use = []
+
+        print(f"Widgets in use: {self.gui.widgets_in_use}")
+        print(f"Alerts in use: {self.gui.alerts_in_use}")
 
 if __name__ == '__main__':
     pass
