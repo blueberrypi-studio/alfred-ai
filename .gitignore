@@ -18,4 +18,6 @@
 
 *pytorch-learnings/
 
-*/node-modules
+*node_modules/
+
+*.env
