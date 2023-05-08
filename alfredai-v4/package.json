@@ -1,0 +1,17 @@
+{
+  "name": "alfredai-v4",
+  "version": "4.0.0",
+  "description": "Version 4 is designed to be a test for the openai GPT models, and intergrating them into my projects.  \r This is the javascript evolution of version 3",
+  "main": "brain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Haydn Boul",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "openai": "^3.2.1"
+  }
+}
