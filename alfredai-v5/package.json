@@ -1,0 +1,18 @@
+{
+  "name": "alfredai-v5",
+  "version": "1.0.0",
+  "description": "Alfred V5 built in REACT and electron",
+  "main": "electron index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron index.js"
+  },
+  "author": "Haydn Boul",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.2.0"
+  },
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
+}
