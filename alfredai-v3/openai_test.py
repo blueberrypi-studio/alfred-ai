@@ -1,31 +1,31 @@
 import openai
+import json
 
-# Use the "text" version of the GPT-3 model
-openai.api_key = "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"
-model_engine = "text-davinci-002"
+# Set up OpenAI API credentials
+openai.api_key = ""
 
-# Function to get a response from the virtual assistant
-def get_response(input_text):
-  prompt = (f"{input_text}\n"
-           )
+# Set up the prompt and parameters
+prompt="You are a virtual assistant that is helpful and friendly"
+engine = "davinci-codex" 
+max_tokens = 150 
+temperature = 0.5 
 
-  completions = openai.Completion.create(
-      engine=model_engine,
-      prompt=prompt,
-      max_tokens=1024,
-      n=1,
-      stop=None,
-      temperature=0.5,
-  )
 
-  message = completions.choices[0].text
-  return message.strip()
-
-# Test the virtual assistant
 while True:
-  user_input = input("You: ")
-  if user_input == "exit":
-    break
-  else:
-    response = get_response(user_input)
-    print(f"Assistant: {response}")
+    prompt = input("You: ")
+    if prompt == "quit":
+        break
+    response = openai.Completion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+    ]
+    )
+    if len(response.choices) > 0:
+        message = response.choices[0].text.strip()
+        print("AI: " + message)
+    else:
+        print("Sorry, I couldn't generate a response.")
