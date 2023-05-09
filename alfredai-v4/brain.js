@@ -24,7 +24,15 @@ userInterface.on("line", async (input) => {
   await openai
     .createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: input }],
+      messages: [
+        {role: "system", content: "Your name is Alfred, You are a helpful and funny assistant."},
+        { role: "user", content: input }, 
+      ],
+      temperature: 0.8,
+      max_tokens: 60,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
     })
     .then((res) => {
       console.log(res.data.choices[0].message.content);
