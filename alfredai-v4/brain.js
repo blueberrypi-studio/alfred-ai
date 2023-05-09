@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 import readline from "readline";
 
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv' 
 dotenv.config()
 
 const configuration = new Configuration({
