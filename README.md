@@ -13,6 +13,7 @@ current version = 2.0
 
 ## Version 4
 * Javascript implementation of open-ai's GPT model to test
+![cmd image](https://portfolio.blueberrypi.studio/media/Screenshot%202023-05-08%20155005_xZyywXp.png)
 
 ## Version 3
 * Python implementation of open-ai's GPT model to test
