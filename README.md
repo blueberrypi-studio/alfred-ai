@@ -9,7 +9,7 @@ current version = 2.0
 * will be using openai's GPT models as the interface
 * use a small scale neural network to determine if a skill is being used
 
-![react.js logo](https://www.datocms-assets.com/45470/1631110818-logo-react-js.png)
+![ui](https://portfolio.blueberrypi.studio/media/Screenshot%202023-05-12%20211313.png)
 
 ## Version 4
 * Javascript implementation of open-ai's GPT model to test
