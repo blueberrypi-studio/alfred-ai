@@ -13,6 +13,9 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+
+console.log(openai);
+
 const userInterface = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
