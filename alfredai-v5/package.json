@@ -1,6 +1,6 @@
 {
   "name": "alfredai-v5",
-  "version": "1.0.0",
+  "version": "5.1.0",
   "description": "Alfred V5 built in REACT and electron",
   "main": "electron index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "electron": "^24.2.0"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "openai": "^3.2.1"
   }
 }
