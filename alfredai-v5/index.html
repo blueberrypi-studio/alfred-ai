@@ -6,16 +6,22 @@
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
-    <div class="container">
-      <div class="circle"></div>
-      <h1 class="alfred-title">Alfred</h1>
+    <div class="container"> <!--Main Container-->
+      <div class="body-container">
+        <div class="logo">
+          <div class="circle"></div>
+          <h1 class="alfred-title">Alfred</h1>
+        </div>
+        <div id="output">
+          <!-- <p>hello</p> -->
+        </div>
+      </div>
+      <div class="input-container">
+        <input type="text" id="textInput" placeholder="Enter prompt here..." onkeydown="if(event.keyCode==13){sendMessage()}" autofocus/>
+      </div>
     </div>
-    <div id="output">
-      <!-- <p>hello</p> -->
-    </div>   
-    <div class="input-container">
-      <input type="text" id="textInput" placeholder="Enter prompt here..." onkeydown="if(event.keyCode==13){sendMessage()}" autofocus/>
-    </div>
+   
+
     <script>
       async function sendMessage() {
         const textInput = document.getElementById('textInput');
@@ -26,7 +32,7 @@
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer insert_key_here`, // Access environment variable
+              'Authorization': `Bearer INSERT_API_KEY_HERE`, // Access environment variable
             },
 
             body: JSON.stringify({
@@ -36,7 +42,7 @@
                 { role: 'user', content: message },
               ],
               temperature: 0.8,
-              max_tokens: 150,
+              max_tokens: 1024,
               top_p: 1.0,
               frequency_penalty: 0.0,
               presence_penalty: 0.0,
