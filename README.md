@@ -2,6 +2,7 @@
 
 ```
 current version = 2.0
+currently under development version = 5.1.0
 ```
 ## Version 5
 * Complete rewrite of version 2
